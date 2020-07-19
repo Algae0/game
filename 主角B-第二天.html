@@ -1,0 +1,811 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>主角B-第二天</title>
+	<style>
+		.title{
+			width: 250px;
+			height: 90px;
+			font-size:60px;
+			font-family:PingFang SC;
+			font-weight:400;
+			color:rgba(112,112,112,1);
+			text-align:center;
+			position: absolute;
+			top: 50px;
+			left: 835px;
+		}
+		/*跳转按钮*/
+		#right{
+			width:66px;
+			height:66px;
+			background:rgba(255,255,255,1);
+			border:2px solid rgba(112,112,112,1);
+			border-radius:15px;
+			position: absolute;
+			top: 60px;
+			left: 1073px;
+		}
+		#icon1{
+			width: 54px;
+			height: 54px;
+			background-image: url("others/arrow_right.png");
+			background-size: cover;
+			position: absolute;
+			top: 6px;
+			left: 6px;
+			z-index: 100;
+		}
+		#left{
+			width:66px;
+			height:66px;
+			background:rgba(255,255,255,1);
+			border:2px solid rgba(112,112,112,1);
+			border-radius:15px;
+			position: absolute;
+			top: 60px;
+			left: 782px;
+		}
+		#icon3{
+			width: 54px;
+			height: 54px;
+			background-image: url("others/arrow_left.png");
+			background-size: cover;
+			position: absolute;
+			top: 6px;
+			left: 6px;
+			z-index: 100;
+		}
+		/*左边盒子及其内部布局*/
+		#boxleft{
+			width:730px;
+			height:860px;
+			background:rgba(228,228,228,1);
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			left: 205px;
+			top: 186px;
+			z-index: 1;
+		}
+		#wall{
+			width:730px;
+			height:213px;
+			background:rgba(255,255,255,1);
+			position:absolute;
+			top: 0px;
+			left: 0px;
+			z-index: 10;
+		}
+		#door{
+			width: 102px;
+			height: 178px;
+			background-image: url("主角B_slices/B-门.png");
+			position: absolute;
+			left: 496px;
+			top: 35px;
+			z-index: 100;
+		}
+		#window{
+			width: 153px;
+			height: 117px;
+			background-image: url("主角B_slices/B-窗.png");
+			position: absolute;
+			left: 81px;
+			top: 96px;
+			z-index: 100;
+		}
+		#dinner{
+			width: 81px;
+			height: 99px;
+			background-image: url("主角B_slices/B-食物.png");
+			position: absolute;
+			left: 284px;
+			top: 159px;
+			z-index: 100;
+		}
+		#time{
+			width: 41px;
+			height: 42px;
+			background-image: url("主角B_slices/B-装饰3.png");
+			position: absolute;
+			left: 373px;
+			top: 45px;
+			z-index: 100;
+		}
+		#drawer{
+			width: 94px;
+			height: 125px;
+			background-image: url("主角B_slices/B-柜子.png");
+			position: absolute;
+			left: 623px;
+			top: 133px;
+			z-index: 100;
+		}
+		#bed{
+			width: 151px;
+			height: 248px;
+			background-image: url("主角B_slices/B-床.png");
+			position: absolute;
+			left: 59px;
+			top: 440px;
+			z-index: 100;
+		}
+		#others1{
+			width: 50px;
+			height: 73px;
+			background-image: url("主角B_slices/B-装饰2.png");
+			position: absolute;
+			left: 44px;
+			top: 394px;
+			z-index: 90;
+		}
+		#computer{
+			width: 131px;
+			height: 202px;
+			background-image: url("主角B_slices/B-电脑.png");
+			position: absolute;
+			left: 480px;
+			top: 299px;
+			z-index: 100;
+		}
+		#board{
+			width: 94px;
+			height: 78px;
+			background-image: url("主角B_slices/B-公告栏.png");
+			position: absolute;
+			left: 472px;
+			top: 594px;
+			z-index: 100;
+		}
+		#wall2{
+			width: 321px;
+			height: 235px;
+			background-image: url("主角B_slices/B-墙.png");
+			position: absolute;
+			left: 412px;
+			top: 554px;
+			z-index: 90;
+		}
+		#others2{
+			width: 47px;
+			height: 122px;
+			background-image: url("主角B_slices/B-装饰1.png");
+			position: absolute;
+			left: 670px;
+			top: 483px;
+			z-index: 80;
+		}
+		/*可移动区域*/
+		#area{
+			width: 730px;
+			height: 647px;
+			position: absolute;
+			left: 0px;
+			top: 213px;
+			z-index: 150;
+		}
+		/*主角*/
+		#main{
+			width:43px;
+			height:43px;
+			background:rgba(255,255,255,1);
+			border:3px solid rgba(0,0,0,1);
+			border-radius:50%;
+			z-index: 150;
+			position: absolute;
+			left: 20px;
+			top: 20px;
+		}
+		/*右边盒子及其内部布局*/
+		#boxdinner{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/Day2-B-食物.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index: 1;
+		}
+		#word1{
+			width:300px;
+			height:133px;
+			font-size:20px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:40px;
+			color:rgba(112,112,112,1);
+			position: absolute;
+			top: 30px;
+			left: 470px;
+		}
+		#boxdoor{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/Day1-B-门.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index: 1;
+		}
+		#click1{
+			width:116px;
+			height:118px;
+			position: absolute;
+			top: 470px;
+			left: 220px;
+			z-index: 100;
+			border: 1px dashed rgba(112,112,112,1);
+		}
+		#click1:active,#click2:active,#click3:active,#click5:active,#click6:active,#send:active,#received:active,#samllbox:active,#right:active,#click7:active{
+			background:rgba(221,221,221,0.34);
+		}
+		#word2{
+			width:120px;
+			height:40px;
+			font-size:20px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:36px;
+			color:rgba(112,112,112,1);
+			text-align: center;
+			background: rgba(228,228,228,1);
+			border-radius:10px;
+			position: absolute;
+			top: 400px;
+			left: 311px;
+			visibility: hidden;
+			z-index: 200;
+		}
+		#boxwindow{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/Day2-B-窗.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index: 1;
+		}
+		#click2{
+			width:181px;
+			height:100px;
+			position: absolute;
+			top: 345px;
+			left: 500px;
+			z-index: 100;
+		}
+		#photo{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/Day2-B-照片.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index: 200;
+		}
+		#boxchest{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/Day1-B-柜子.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index: 1;
+		}
+		#click3{
+			width:404px;
+			height:112px;
+			position: absolute;
+			top: 321px;
+			left: 161px;
+			z-index: 100;
+		}
+		#boxdrawer{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/Day2-B-抽屉.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index:200;
+		}
+		#boxbed{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/Day1-B-床.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index:1;
+		}
+		#click5{
+			width:225px;
+			height:84px;
+			position: absolute;
+			top: 112px;
+			left: 253px;
+			z-index: 100;
+		}
+		#boxpassword{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/Day2-B-密码.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index:1;
+		}
+		#boxcomputer{
+			width:730px;
+			height:860px;
+			background-image:url("boxright/Day1-B-电脑.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index:1;
+		}
+		#click6{
+			width: 398px;
+			height:210px;
+			position: absolute;
+			top: 237px;
+			left: 162px;
+			z-index: 100;
+		}
+		#boxscreen{
+			width:730px;
+			height:860px;
+			background-image:url("boxright/Day1-B-屏幕.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index:1;
+		}
+		#send{
+			width:147px;
+			height:55px;
+			background:rgba(255,255,255,1);
+			border:2px solid rgba(112,112,112,1);
+			color: rgba(112,112,112,1);
+			font-size:20px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:50px;
+			visibility: hidden;
+			text-align: center;
+			position: absolute;
+			top: 587px;
+			left: 1277px;
+			z-index: 100;
+		}
+		#received{
+			width:147px;
+			height:55px;
+			background:rgba(255,255,255,1);
+			border:2px solid rgba(112,112,112,1);
+			color: rgba(112,112,112,1);
+			font-size:20px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:50px;
+			visibility: hidden;
+			text-align: center;
+			position: absolute;
+			left: 1277px;
+			top: 462px;
+			z-index: 100;
+		}
+		#smallbox{
+			width:730px;
+			height:860px;
+			background-image:url("boxright/邮件.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index:300;	
+		}
+		#letter1{
+			width:571px;
+			height:33px;
+			font-size:20px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:50px;
+			color:rgba(112,112,112,1);
+			position: absolute;
+			top: 55px;
+			left: 114px;
+		}
+		#letter2{
+			width:574px;
+			height:33px;
+			font-size:20px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:50px;
+			color:rgba(112,112,112,1);
+			position: absolute;
+			top: 110px;
+			left: 114px;
+		}
+		#letter3{
+			width:547px;
+			height:500px;
+			font-size:18px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:30px;
+			color:rgba(112,112,112,1);
+			position: absolute;
+			top: 189px;
+			left: 114px;
+		}
+		#boxwall{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/Day2-B-墙.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index: 1;
+		}
+		#click7{
+			width: 271px;
+			height: 158px;
+			position: absolute;
+			top: 230px;
+			left: 154px;
+			z-index: 100;
+		}
+		#boxboard{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/Day2-B-公告栏_画板 1.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index: 200;
+		}
+		#word5{
+			width: 639px;
+			height: 207px;
+			position: absolute;
+			top: 342px;
+			left: 46px;
+			z-index: 200;
+			font-size:20px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:40px;
+			color:rgba(112,112,112,1);
+			text-align: center;
+		}
+		.designer{
+			width:234px;
+			height:21px;
+			font-size:15px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:21px;
+			color:rgba(112,112,112,1);
+			position: absolute;
+			top: 1200px;
+			left:843px;
+			z-index: 1;
+			text-align: center;
+		}
+		body{
+			background-color:white;
+			margin: 0;
+			padding: 0;
+			min-height: 1300px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="title">第二天</div>
+	<a href="index.html">
+		<div id="left">
+			<div id="icon3"></div>
+		</div>
+	</a>
+	<a href="主角B-第三天.html" title="Day3-主人公B">
+		<div id="right">
+			<div id="icon1"></div>
+		</div>
+	</a>
+	<div id="boxleft">
+		<div id="wall"></div>
+		<div id="area">
+			<div id="main"></div>
+		</div>
+		<div id="door"></div>
+		<div id="window"></div>
+		<div id="dinner"></div>
+		<div id="time"></div>
+		<div id="drawer"></div>
+		<div id="bed"></div>
+		<div id="others1"></div>
+		<div id="computer"></div>
+		<div id="board"></div>
+		<div id="wall2"></div>
+		<div id="others2"></div>
+	</div>
+	<div id="boxdinner">
+		<div id="word1">
+			生活还习惯吧，<br>
+			有什么不适应，<br>
+			可要提出来,<br>
+			要不然，<br>别人可要说我招待不周了。<br>
+		</div>	
+	</div>
+	<div id="boxdoor">
+		<div id="click1" onClick="clickDoor()"></div>
+		<div id="word2" onClick="clickBack2()">门锁上了</div>
+	</div>
+	<div id="boxwindow">
+		<div id="click2" onClick="clickWindow()"></div>
+	</div>
+	<div id="photo" onClick="clickBack1()"></div>
+	<div id="boxchest">
+		<div id="click3" onClick="clickChest()"></div>
+	</div>
+	<div id="boxdrawer" onClick="clickBack3()">
+	</div>
+	<div id="boxbed">
+		<div id="click5" onClick="clickBed()"></div>
+	</div>
+	<div id="boxpassword" onClick="clickBack5()"></div>
+	<div id="boxcomputer">
+		<div id="click6" onClick="clickComputer()"></div>
+	</div>
+	<div id="boxscreen" onClick="clickBack6()"></div>
+	<div id="received" onClick="clickReceived()">收件箱</div>
+	<div id="smallbox" onClick="clickBack7()">
+		<div id="letter1">MR. B</div>
+		<div id="letter2">MR. A</div>
+		<div id="letter3">      
+			你好，我是警察，请问有什么需要帮助的地方吗？<br>
+			请不要恶作剧，如果真的有需要帮助的地方请随时给我发消息。<br>
+		</div>
+	</div>
+	<a href="主角A-第二天.html" title="主人公A">
+		<div id="send">发件箱</div>
+	</a>
+	<div id="boxwall">
+		<div id="click7" onClick="clickWall()"></div>
+	</div>
+	<div id="boxboard" onClick="clickBack8()">
+		<div id="word5" onClick="clickBcak8()">
+			公告：<br>
+			昨日，有五人从<u>栅栏处</u>尝试突破房间，失败。<br>
+			请大家在进行游戏过程中，注意游戏规则。<br>
+			祝大家好运，<br>
+			失败者可是会受到惩罚的。<br>
+		</div>
+	</div>
+	<!--设计者-->
+	<div class="designer">
+		<p>designed by Algae 2020/07</p>
+	</div>
+	
+	<script type="text/javascript">
+		//门的点击事件
+		var oWord2 = document.getElementById("word2");
+		function clickDoor(){
+			oWord2.style.visibility="visible";
+		}
+		//窗的点击事件
+		var oPhoto = document.getElementById("photo");
+		function clickWindow(){
+			oPhoto.style.visibility="visible";
+		}
+		//退出图片页
+		function clickBack1(){
+			oPhoto.style.visibility="hidden";
+		}
+		function clickBack2(){
+			oWord2.style.visibility="hidden";
+		}
+		function clickBack3(){
+			oBoxdrawer.style.visibility="hidden";
+		}
+		function clickBack4(){
+			oBoxLetter.style.visibility="hidden";
+		}
+		function clickBack5(){
+			oBoxPassword.style.visibility="hidden";
+		}
+		function clickBack6(){
+			oBoxScreen.style.visibility="hidden";
+			oSend.style.visibility="hidden";
+			oReceived.style.visibility="hidden";
+		}
+		function clickBack7(){
+			oSmallBox.style.visibility="hidden";			
+		}
+		function clickBack8(){
+			oBoxBoard.style.visibility="hidden";
+		}
+		//柜子的点击事件
+		var oBoxdrawer = document.getElementById("boxdrawer");
+		function clickChest(){
+			oBoxdrawer.style.visibility="visible";
+		}
+		//信的点击事件
+		var oBoxLetter = document.getElementById("boxletter");
+		function clickLetter(){
+			oBoxLetter.style.visibility="visible";
+		}
+		//床的点击事件
+		var oBoxPassword = document.getElementById("boxpassword");
+		function clickBed(){
+			oBoxPassword.style.visibility="visible";
+		}
+		//电脑的点击事件
+		var oBoxScreen = document.getElementById("boxscreen");
+		var oSend = document.getElementById("send");
+		var oReceived = document.getElementById("received");
+		function clickComputer(){
+			oBoxScreen.style.visibility="visible";
+			oSend.style.visibility="visible";
+			oReceived.style.visibility="visible";
+		}
+		//收件箱点击事件
+		var oSmallBox = document.getElementById("smallbox");
+		function clickReceived(){
+			oSmallBox.style.visibility="visible";
+		}
+		//公告栏的点击事件
+		var oBoxBoard = document.getElementById("boxboard");
+		function clickWall(){
+			oBoxBoard.style.visibility="visible";
+		}
+		//当页面加载完后
+    window.onload = function(){
+		//获取主人公元素和限制移动的范围元素
+		var oMain = document.getElementById("main");
+		var oBoxdinner = document.getElementById("boxdinner");
+		var oBoxdoor = document.getElementById("boxdoor");
+		var oBoxWindow = document.getElementById("boxwindow");
+		var oBoxChest = document.getElementById("boxchest");
+		var oBoxBed = document.getElementById("boxbed");
+		var oBoxComputer = document.getElementById("boxcomputer");
+		var oBoxWall = document.getElementById("boxwall");
+		//Event对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态
+		document.onkeydown = function(ev){
+			//兼容浏览器
+			var oEvent = ev || event;
+			var oMainleft = oMain.offsetLeft;
+			//键盘控制主体移动，并限制移动区域
+			if(oEvent.keyCode==65){
+				if(oMain.offsetLeft<10){
+					oMain.style.left = 0+"px";
+				}
+				else{
+					oMain.style.left = oMain.offsetLeft-20+"px";
+				}
+			}
+			if(oEvent.keyCode==87){
+				if(oMain.offsetTop<10){
+					oMain.style.top = 0+"px";
+				}
+				else{
+					oMain.style.top = oMain.offsetTop-20+"px";
+				}
+			}
+			if(oEvent.keyCode==68){
+				if(oMain.offsetLeft>670){
+					oMain.style.left = 680+"px";
+				}
+				else{
+					oMain.style.left = oMain.offsetLeft+20+"px";
+				}
+			}
+			if(oEvent.keyCode==83){
+				if(oMain.offsetTop>590){
+					oMain.style.top = 600+"px";
+				}
+				else{
+					oMain.style.top = oMain.offsetTop+20+"px";
+				}
+			}
+			//在固定的区域可以触发事件
+			if(oMain.offsetLeft>230&&oMain.offsetLeft<370&&oMain.offsetTop>=0&&oMain.offsetTop<45){
+				oBoxdinner.style.visibility="visible";
+			}
+			else{
+				oBoxdinner.style.visibility="hidden";
+				
+			}
+			if(oMain.offsetLeft>=20&&oMain.offsetLeft<=210&&oMain.offsetTop>=227&&oMain.offsetTop<475){
+				oBoxBed.style.visibility="visible";
+			}
+			else{
+				oBoxBed.style.visibility="hidden";
+				oBoxPassword.style.visibility="hidden";
+			}
+			if(oMain.offsetLeft>=430&&oMain.offsetLeft<610&&oMain.offsetTop>=50&&oMain.offsetTop<288){
+				oBoxComputer.style.visibility="visible";
+			}
+			else{
+				oBoxComputer.style.visibility="hidden";
+				oBoxScreen.style.visibility="hidden";
+				oSend.style.visibility="hidden";
+				oReceived.style.visibility="hidden";
+				oSmallBox.style.visibility="hidden";
+			}
+			if(oMain.offsetLeft>=380&&oMain.offsetLeft<720&&oMain.offsetTop>=300&&oMain.offsetTop<575){
+				oBoxWall.style.visibility="visible";
+			}
+			else{
+				oBoxWall.style.visibility="hidden";
+				oBoxBoard.style.visibility="hidden";
+			}
+			if(oMain.offsetLeft>=480&&oMain.offsetLeft<600&&oMain.offsetTop<=15){
+				oBoxdoor.style.visibility="visible";
+			}
+			else{
+				oBoxdoor.style.visibility="hidden";
+				oWord2.style.visibility="hidden";
+			}
+			if(oMain.offsetLeft>=60&&oMain.offsetLeft<234&&oMain.offsetTop<=15){
+				oBoxWindow.style.visibility="visible";
+			}
+			else{
+				oBoxWindow.style.visibility="hidden";
+				oPhoto.style.visibility="hidden";
+			}
+			if(oMain.offsetLeft>560&&oMain.offsetLeft<710&&oMain.offsetTop>=0&&oMain.offsetTop<45){
+				oBoxChest.style.visibility="visible";
+			}
+			else{
+				oBoxChest.style.visibility="hidden";
+				oBoxdrawer.style.visibility="hidden";
+				oBoxLetter.style.visibility="hidden";
+			}
+		}
+	}
+	</script>
+</body>
+</html>

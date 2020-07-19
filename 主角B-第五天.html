@@ -1,0 +1,413 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>主角B-第五天</title>
+	<style>
+		.title{
+			width: 250px;
+			height: 90px;
+			font-size:60px;
+			font-family:PingFang SC;
+			font-weight:400;
+			color:rgba(112,112,112,1);
+			text-align:center;
+			position: absolute;
+			top: 50px;
+			left: 835px;
+		}
+		/*跳转按钮*/
+		#right{
+			width:66px;
+			height:66px;
+			background:rgba(255,255,255,1);
+			border:2px solid rgba(112,112,112,1);
+			border-radius:15px;
+			position: absolute;
+			top: 60px;
+			left: 1073px;
+		}
+		#icon1{
+			width: 54px;
+			height: 54px;
+			background-image: url("others/arrow_right.png");
+			background-size: cover;
+			position: absolute;
+			top: 6px;
+			left: 6px;
+			z-index: 100;
+		}
+		#left{
+			width:66px;
+			height:66px;
+			background:rgba(255,255,255,1);
+			border:2px solid rgba(112,112,112,1);
+			border-radius:15px;
+			position: absolute;
+			top: 60px;
+			left: 782px;
+		}
+		#icon3{
+			width: 54px;
+			height: 54px;
+			background-image: url("others/arrow_left.png");
+			background-size: cover;
+			position: absolute;
+			top: 6px;
+			left: 6px;
+			z-index: 100;
+		}
+		/*左边盒子及其内部布局*/
+		#boxleft{
+			width:730px;
+			height:860px;
+			background:rgba(228,228,228,1);
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			left: 205px;
+			top: 186px;
+			z-index: 1;
+		}
+		#wall{
+			width:730px;
+			height:213px;
+			background:rgba(255,255,255,1);
+			position:absolute;
+			top: 0px;
+			left: 0px;
+			z-index: 10;
+		}
+		#door{
+			width: 102px;
+			height: 178px;
+			background-image: url("主角B_slices/B-门.png");
+			position: absolute;
+			left: 496px;
+			top: 35px;
+			z-index: 100;
+		}
+		#window{
+			width: 153px;
+			height: 117px;
+			background-image: url("主角B_slices/B-窗.png");
+			position: absolute;
+			left: 81px;
+			top: 96px;
+			z-index: 100;
+		}
+		#dinner{
+			width: 81px;
+			height: 99px;
+			background-image: url("主角B_slices/B-食物.png");
+			position: absolute;
+			left: 284px;
+			top: 159px;
+			z-index: 100;
+		}
+		#time{
+			width: 41px;
+			height: 42px;
+			background-image: url("主角B_slices/B-装饰3.png");
+			position: absolute;
+			left: 373px;
+			top: 45px;
+			z-index: 100;
+		}
+		#drawer{
+			width: 94px;
+			height: 125px;
+			background-image: url("主角B_slices/B-柜子.png");
+			position: absolute;
+			left: 623px;
+			top: 133px;
+			z-index: 100;
+		}
+		#bed{
+			width: 151px;
+			height: 248px;
+			background-image: url("主角B_slices/B-床.png");
+			position: absolute;
+			left: 59px;
+			top: 440px;
+			z-index: 100;
+		}
+		#others1{
+			width: 50px;
+			height: 73px;
+			background-image: url("主角B_slices/B-装饰2.png");
+			position: absolute;
+			left: 44px;
+			top: 394px;
+			z-index: 90;
+		}
+		#computer{
+			width: 131px;
+			height: 202px;
+			background-image: url("主角B_slices/B-电脑.png");
+			position: absolute;
+			left: 480px;
+			top: 299px;
+			z-index: 100;
+		}
+		#board{
+			width: 94px;
+			height: 78px;
+			background-image: url("主角B_slices/B-公告栏.png");
+			position: absolute;
+			left: 472px;
+			top: 594px;
+			z-index: 100;
+		}
+		#wall2{
+			width: 321px;
+			height: 235px;
+			background-image: url("主角B_slices/B-墙.png");
+			position: absolute;
+			left: 412px;
+			top: 554px;
+			z-index: 90;
+		}
+		#others2{
+			width: 47px;
+			height: 122px;
+			background-image: url("主角B_slices/B-装饰1.png");
+			position: absolute;
+			left: 670px;
+			top: 483px;
+			z-index: 80;
+		}
+		/*可移动区域*/
+		#area{
+			width: 730px;
+			height: 647px;
+			position: absolute;
+			left: 0px;
+			top: 213px;
+			z-index: 150;
+		}
+		/*主角*/
+		#main{
+			width:43px;
+			height:43px;
+			background:rgba(255,255,255,1);
+			border:3px solid rgba(0,0,0,1);
+			border-radius:50%;
+			z-index: 150;
+			position: absolute;
+			left: 20px;
+			top: 20px;
+		}
+		#boxdoor{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/Day1-B-门.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index: 1;
+		}
+		#click1{
+			width:116px;
+			height:118px;
+			position: absolute;
+			top: 470px;
+			left: 220px;
+			z-index: 100;
+			border: 1px dashed rgba(112,112,112,1);
+		}
+		#click1:active,#click2:active,#click3:active,#click5:active,#click6:active,#send:active,#received:active,#samllbox:active,#right:active,#click7:active{
+			background:rgba(221,221,221,0.34);
+		}
+		#door2{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/Day5-B-门.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index: 900;
+		}
+		.designer{
+			width:234px;
+			height:21px;
+			font-size:15px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:21px;
+			color:rgba(112,112,112,1);
+			position: absolute;
+			top: 1200px;
+			left:843px;
+			z-index: 1;
+			text-align: center;
+		}
+		body{
+			background-color:white;
+			margin: 0;
+			padding: 0;
+			min-height: 1300px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="title">第五天</div>
+	<a href="主角B-第四天.html">
+		<div id="left">
+			<div id="icon3"></div>
+		</div>
+	</a>
+
+	<div id="boxleft">
+		<div id="wall"></div>
+		<div id="area">
+			<div id="main"></div>
+		</div>
+		<div id="door"></div>
+		<div id="window"></div>
+		<div id="dinner"></div>
+		<div id="time"></div>
+		<div id="drawer"></div>
+		<div id="bed"></div>
+		<div id="others1"></div>
+		<div id="computer"></div>
+		<div id="board"></div>
+		<div id="wall2"></div>
+		<div id="others2"></div>
+	</div>
+	<div id="boxdoor">
+		<div id="click1" onClick="clickDoor()"></div>
+	</div>
+	<div id="door2" onClick="clickGoTo()"></div>
+
+	<!--设计者-->
+	<div class="designer">
+		<p>designed by Algae 2020/07</p>
+	</div>
+	
+	<script type="text/javascript">
+		//门的点击事件
+		var oDoor2 = document.getElementById("door2");
+		function clickDoor(){
+			oDoor2.style.visibility="visible";
+		}
+		function clickGoTo(){
+			window.location.href="主角A-第五天.html";
+		}
+		//当页面加载完后
+    window.onload = function(){
+		//获取主人公元素和限制移动的范围元素
+		var oMain = document.getElementById("main");
+		var oBoxdinner = document.getElementById("boxdinner");
+		var oBoxdoor = document.getElementById("boxdoor");
+		var oBoxWindow = document.getElementById("boxwindow");
+		var oBoxChest = document.getElementById("boxchest");
+		var oBoxBed = document.getElementById("boxbed");
+		var oBoxComputer = document.getElementById("boxcomputer");
+		var oBoxWall = document.getElementById("boxwall");
+		//Event对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态
+		document.onkeydown = function(ev){
+			//兼容浏览器
+			var oEvent = ev || event;
+			var oMainleft = oMain.offsetLeft;
+			//键盘控制主体移动，并限制移动区域
+			if(oEvent.keyCode==65){
+				if(oMain.offsetLeft<10){
+					oMain.style.left = 0+"px";
+				}
+				else{
+					oMain.style.left = oMain.offsetLeft-20+"px";
+				}
+			}
+			if(oEvent.keyCode==87){
+				if(oMain.offsetTop<10){
+					oMain.style.top = 0+"px";
+				}
+				else{
+					oMain.style.top = oMain.offsetTop-20+"px";
+				}
+			}
+			if(oEvent.keyCode==68){
+				if(oMain.offsetLeft>670){
+					oMain.style.left = 680+"px";
+				}
+				else{
+					oMain.style.left = oMain.offsetLeft+20+"px";
+				}
+			}
+			if(oEvent.keyCode==83){
+				if(oMain.offsetTop>590){
+					oMain.style.top = 600+"px";
+				}
+				else{
+					oMain.style.top = oMain.offsetTop+20+"px";
+				}
+			}
+			//在固定的区域可以触发事件
+			if(oMain.offsetLeft>=480&&oMain.offsetLeft<600&&oMain.offsetTop<=15){
+				oBoxdoor.style.visibility="visible";
+			}
+			else{
+				oBoxdoor.style.visibility="hidden";
+				oWord2.style.visibility="hidden";
+			}
+			if(oMain.offsetLeft>230&&oMain.offsetLeft<370&&oMain.offsetTop>=0&&oMain.offsetTop<45){
+				oBoxdinner.style.visibility="visible";
+			}
+			else{
+				oBoxdinner.style.visibility="hidden";
+				
+			}
+			
+			if(oMain.offsetLeft>=20&&oMain.offsetLeft<=210&&oMain.offsetTop>=227&&oMain.offsetTop<475){
+				oBoxBed.style.visibility="visible";
+			}
+			else{
+				oBoxBed.style.visibility="hidden";
+				oBoxPassword.style.visibility="hidden";
+			}
+			if(oMain.offsetLeft>=430&&oMain.offsetLeft<610&&oMain.offsetTop>=50&&oMain.offsetTop<288){
+				oBoxComputer.style.visibility="visible";
+			}
+			else{
+				oBoxComputer.style.visibility="hidden";
+				oBoxScreen.style.visibility="hidden";
+				oSend.style.visibility="hidden";
+				oReceived.style.visibility="hidden";
+				oSmallBox.style.visibility="hidden";
+			}
+			if(oMain.offsetLeft>=380&&oMain.offsetLeft<720&&oMain.offsetTop>=300&&oMain.offsetTop<575){
+				oBoxWall.style.visibility="visible";
+			}
+			else{
+				oBoxWall.style.visibility="hidden";
+				oBoxBoard.style.visibility="hidden";
+			}
+			
+			if(oMain.offsetLeft>=60&&oMain.offsetLeft<234&&oMain.offsetTop<=15){
+				oBoxWindow.style.visibility="visible";
+			}
+			else{
+				oBoxWindow.style.visibility="hidden";
+				oPhoto.style.visibility="hidden";
+			}
+			if(oMain.offsetLeft>560&&oMain.offsetLeft<710&&oMain.offsetTop>=0&&oMain.offsetTop<45){
+				oBoxChest.style.visibility="visible";
+			}
+			else{
+				oBoxChest.style.visibility="hidden";
+				oBoxdrawer.style.visibility="hidden";
+				oBoxLetter.style.visibility="hidden";
+			}
+		}
+	}
+	</script>
+	
+</body>
+</html>

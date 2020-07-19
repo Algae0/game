@@ -1,0 +1,781 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>主角A-第二天</title>
+	<style>
+		.title{
+			width: 250px;
+			height: 90px;
+			font-size:60px;
+			font-family:PingFang SC;
+			font-weight:400;
+			color:rgba(112,112,112,1);
+			text-align:center;
+			position: absolute;
+			top: 50px;
+			left: 835px;
+		}
+		/*跳转按钮*/
+		#right{
+			width:66px;
+			height:66px;
+			background:rgba(255,255,255,1);
+			border:2px solid rgba(112,112,112,1);
+			border-radius:15px;
+			position: absolute;
+			top: 60px;
+			left: 1073px;
+		}
+		#icon1{
+			width: 54px;
+			height: 54px;
+			background-image: url("others/arrow_right.png");
+			background-size: cover;
+			position: absolute;
+			top: 6px;
+			left: 6px;
+			z-index: 100;
+		}
+		#left{
+			width:66px;
+			height:66px;
+			background:rgba(255,255,255,1);
+			border:2px solid rgba(112,112,112,1);
+			border-radius:15px;
+			position: absolute;
+			top: 60px;
+			left: 782px;
+		}
+		#icon3{
+			width: 54px;
+			height: 54px;
+			background-image: url("others/arrow_left.png");
+			background-size: cover;
+			position: absolute;
+			top: 6px;
+			left: 6px;
+			z-index: 100;
+		}
+		/*前进按钮*/
+		#go{
+			width: 60px;
+			height: 60px;
+			background-color: white;
+			border:3px solid rgba(112,112,112,1);
+			border-radius:15px;
+			position: absolute;
+			top: 973px;
+			left: 848px;
+			z-index: 500;		
+		}
+		#icon2{
+			width: 54px;
+			height: 54px;
+			background-image: url("others/arrow_right.png");
+			background-size: cover;
+			position: absolute;
+			top: 3px;
+			left: 3px;
+			z-index: 600;
+		}
+		/*左边盒子及其内部布局*/
+		#boxleft{
+			width:730px;
+			height:860px;
+			background:rgba(0,29,80,1);
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			left: 205px;
+			top: 186px;
+			z-index: 1;
+		}
+		#wall{
+			width:230px;
+			height:860px;
+			background:rgba(251,210,193,1);
+			position:absolute;
+			top: 0px;
+			left: 500px;
+			z-index: 10;
+		}
+		#door{
+			width: 173px;
+			height: 113px;
+			background-image: url("主角A_slices/A-门.png");
+			position: absolute;
+			left: 500px;
+			top: 266px;
+			z-index: 100;
+		}
+		#window{
+			width: 96px;
+			height: 118px;
+			background-image: url("主角A_slices/A-窗.png");
+			position: absolute;
+			left: 500px;
+			top: 507px;
+			z-index: 100;
+		}
+		#work{
+			width: 83px;
+			height: 104px;
+			background-image: url("主角A_slices/A-打卡台.png");
+			position: absolute;
+			left: 19px;
+			top: 14px;
+			z-index: 100;
+		}
+		#time{
+			width: 46px;
+			height: 45px;
+			background-image: url("主角A_slices/A-时钟.png");
+			background-size: cover;
+			position: absolute;
+			left: 245px;
+			top: 642px;
+			z-index: 100;
+		}
+		#phone{
+			width: 196px;
+			height: 304px;
+			background-image: url("主角A_slices/A-手机.png");
+			position: absolute;
+			left: 0px;
+			top: 193px;
+			z-index: 100;
+		}
+		#shop{
+			width: 93px;
+			height: 108px;
+			background-image: url("主角A_slices/A-购物机器.png");
+			position: absolute;
+			left: 202px;
+			top: 463px;
+			z-index: 100;
+		}
+		#desk{
+			width: 150px;
+			height: 135px;
+			background-image: url("主角A_slices/A-上司工作桌.png");
+			position: absolute;
+			left: 40px;
+			top: 716px;
+			z-index: 110;
+		}
+		#computer{
+			width: 232px;
+			height: 220px;
+			background-image: url("主角A_slices/A-电脑桌.png");
+			position: absolute;
+			left: 140px;
+			top: 118px;
+			z-index: 100;
+		}
+		#wall2{
+			width: 327px;
+			height: 239px;
+			background-image: url("主角A_slices/A-墙.png");
+			position: absolute;
+			left: 0px;
+			top: 583px;
+			z-index: 90;
+		}
+		/*可移动区域*/
+		#area{
+			width: 500px;
+			height: 860px;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			z-index: 150;
+		}
+		/*主角*/
+		#main{
+			width:43px;
+			height:43px;
+			background:rgba(255,255,255,1);
+			border:3px solid rgba(0,0,0,1);
+			border-radius:50%;
+			z-index: 150;
+			position: absolute;
+			left: 430px;
+			top: 23px;
+		}
+		/*右边盒子及其内部布局*/
+		#boxwork{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/Day2-A-打卡.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index: 1;
+		}
+		#click1{
+			width: 177px;
+			height: 61px;
+			position: absolute;
+			top: 308px;
+			left: 275px;
+			z-index: 100;
+		}
+		#boxdaily{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/Day2-A-日计划.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index: 200;
+		}
+		#word1{
+			width:168px;
+			height:139px;
+			font-size:18px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:30px;
+			color:rgba(0,0,0,1);
+			position: absolute;
+			top: 291px;
+			left: 191px;
+		}
+		#click1:active,#click2:active,#click3:active,#click4:active,#click5:active,#click6:active,#send:active,#received:active,#samllbox:active,#right:active.#confirm:active{
+			background:rgba(221,221,221,0.34);
+		}
+		#boxcomputer{
+			width:730px;
+			height:860px;
+			background-image:url("boxright/Day1-A-电脑.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index:1;
+		}
+		#click2{
+			width: 398px;
+			height:210px;
+			position: absolute;
+			top: 237px;
+			left: 162px;
+			z-index: 100;
+		}
+		#boxscreen{
+			width:730px;
+			height:860px;
+			background-image:url("boxright/Day1-A-屏幕 .png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index:1;
+		}
+		#send{
+			width:147px;
+			height:55px;
+			background:rgba(255,255,255,1);
+			border:2px solid rgba(112,112,112,1);
+			color: rgba(112,112,112,1);
+			font-size:20px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:50px;
+			visibility: hidden;
+			text-align: center;
+			position: absolute;
+			top: 587px;
+			left: 1277px;
+			z-index: 200;
+		}
+		#received{
+			width:147px;
+			height:55px;
+			background:rgba(255,255,255,1);
+			border:2px solid rgba(112,112,112,1);
+			color: rgba(112,112,112,1);
+			font-size:20px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:50px;
+			visibility: hidden;
+			text-align: center;
+			position: absolute;
+			left: 1277px;
+			top: 462px;
+			z-index: 200;
+		}
+		#smallbox{
+			width:730px;
+			height:860px;
+			background-image:url("boxright/邮件2.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index:300;			
+		}
+		#letter1{
+			width:571px;
+			height:33px;
+			font-size:20px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:50px;
+			color:rgba(112,112,112,1);
+			position: absolute;
+			top: 55px;
+			left: 114px;
+		}
+		#letter2{
+			width:574px;
+			height:33px;
+			font-size:20px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:50px;
+			color:rgba(112,112,112,1);
+			position: absolute;
+			top: 110px;
+			left: 114px;
+		}
+		#letter3{
+			width:547px;
+			height:500px;
+			font-size:18px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:30px;
+			color:rgba(112,112,112,1);
+			position: absolute;
+			top: 189px;
+			left: 114px;
+		}
+		#boxdesk{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/Day1-A-上级桌子.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index: 1;
+		}
+		#click3{
+			width:101px;
+			height:167px;
+			position: absolute;
+			top: 425px;
+			left: 158px;
+			z-index: 100;
+		}
+		#boxpaper{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/Day1-A-通知.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index:200;
+		}
+		#word2{
+			width: 421px;
+			height: 90px;
+			color:rgba(0,0,0,1);
+			font-size:18px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:30px;
+			position: absolute;
+			top: 365px;
+			left: 155px;
+		}
+		#boxphonedesk{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/Day1-A-手机桌.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index:1;
+		}
+		#click4{
+			width:52px;
+			height:86px;
+			position: absolute;
+			top: 424px;
+			left: 345px;
+			z-index: 100;
+		}
+		#boxphone{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/Day2-A-手机.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index:100;
+		}
+		#passwordpic{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/密码框.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index:500;
+		}
+		#password{
+			width:300px;
+			height:50px;
+			font-size:25px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:30px;
+			color:rgba(0,0,0,1);
+			text-align: center;
+			position: absolute;
+			left: 215px;
+			top: 355px;
+			z-index: 700;
+		}
+		#confirm{
+			width:211px;
+			height:65px;
+			position: absolute;
+			top: 447px;
+			left: 266px;
+			z-index: 700;
+		}
+		#word3{
+			width: 240px;
+			height: 36px;
+			font-size:25px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:30px;
+			color:rgba(255,255,255,1.00);
+			text-align: center;
+			position: absolute;
+			left: 251px;
+			top: 202px;
+			z-index: 200px;
+		}
+		#boxmachine{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/Day2-A-高科技.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index:1;
+		}
+		#click5{
+			width: 412px;
+			height: 339px;
+			position: absolute;
+			top: 173px;
+			left: 159px;
+			z-index: 100;
+		}
+		#panoption{
+			width:730px;
+			height:860px;
+			background-image: url("boxright/圆形监狱.png");
+			background-size: cover;
+			border:6px solid rgba(0,0,0,1);
+			position: absolute;
+			top: 186px;
+			left: 985px;
+			visibility: hidden;
+			z-index:200;
+		}
+		.designer{
+			width:234px;
+			height:21px;
+			font-size:15px;
+			font-family:PingFang SC;
+			font-weight:400;
+			line-height:21px;
+			color:rgba(112,112,112,1);
+			position: absolute;
+			top: 1200px;
+			left:843px;
+			z-index: 1;
+			text-align: center;
+		}
+		body{
+			background-color:white;
+			margin: 0;
+			padding: 0;
+			min-height: 1300px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="title">第二天</div>
+	<a href="主角A-第一天.html">
+		<div id="left">
+			<div id="icon3"></div>
+		</div>
+	</a>
+	<a href="主角A-第三天.html" title="Day3-MR.A">
+		<div id="right">
+			<div id="icon1"></div>
+		</div>
+	</a>
+	<a href="主角A-第三天.html" title="Day3-MR.A">
+		<div id="go">
+			<div id="icon2"></div>
+		</div>
+	</a>
+	<div id="boxleft">
+		<div id="wall"></div>
+		<div id="area">
+			<div id="main"></div>
+		</div>
+		<div id="door"></div>
+		<div id="window"></div>
+		<div id="work"></div>
+		<div id="time"></div>
+		<div id="phone"></div>
+		<div id="shop"></div>
+		<div id="desk"></div>
+		<div id="computer"></div>
+		<div id="wall2"></div>
+	</div>
+	<div id="boxwork">
+		<div id="click1" onClick="clickWork()"></div>
+		</div>
+	<div id="boxdaily" onClick="clickBack1()">
+		<div id="word1">
+			1.记得看手机；<br>
+			2.认真工作！！！<br>
+			3.查一下那个密码；<br>
+			……
+		</div>	
+	</div>
+	<div id="boxcomputer">
+		<div id="click2" onClick="clickComputer()"></div>
+	</div>
+	<div id="boxscreen" onClick="clickBack2()"></div>
+	<div id="received" onClick="clickReceived()">收件箱</div>
+	<div id="smallbox" onClick="clickBack3()">
+		<div id="letter1">MR. A</div>
+		<div id="letter2">MR. B</div>
+		<div id="letter3">      
+			你好，今天已经是我“待在”这里的第14天了吧，这里生活其实挺不错的，但是我一点自由也没有，出不去，又好像时时刻刻有人监视着我。<br>
+			最初我是真的打算自己破解密码逃出这个“密室”的，但是我发现我做不到，我每天只有一次机会能通过邮件和你联系，希望你能帮帮我。<br>
+			这是一个新的密码，谢谢你谢谢你！<br>
+		</div>
+	</div>
+		<div id="send" onClick="clickSend()">发件箱</div>
+	<div id="passwordpic">
+		<div id="word3">请输入破译出的密码1</div>
+		<input id="password" type="text">
+		<div id="confirm" onClick="confirmIt()"></div>
+	</div>
+	<div id="boxphonedesk">
+		<div id="click4" onClick="clickPhoneDesk()"></div>
+	</div>
+	<div id="boxphone" onClick="clickBack5()"></div>
+	<div id="boxmachine">
+		<div id="click5" onClick="clickMachine()"></div>
+	</div>
+	<div id="panoption" onClick="clickBack7()"></div>
+	<!--设计者-->
+	<div class="designer">
+		<p>designed by Algae 2020/07</p>
+	</div>
+	
+	<script type="text/javascript">
+		//判断密码正确性
+		var oPassword = document.getElementById("password");
+		function confirmIt(){
+			if(oPassword.value=="圆形监狱"){
+				window.location.href="主角B-第三天.html";
+			}
+			else{
+				alert("密码错误，请重试");
+			}
+		}
+		//退出图片页
+		function clickBack1(){
+			oBoxDaily.style.visibility="hidden";
+		}
+		function clickBack2(){
+			oBoxScreen.style.visibility="hidden";
+			oSend.style.visibility="hidden";
+			oReceived.style.visibility="hidden";
+		}
+		function clickBack3(){
+			oSmallBox.style.visibility="hidden";			
+		}
+		function clickBack4(){
+			oBoxPaper.style.visibility="hidden";
+		}
+		function clickBack5(){
+			oBoxPhone.style.visibility="hidden";
+		}
+		function clickBack6(){
+			oPasswordPic.style.visibility="hidden";
+		}
+		function clickBack7(){
+			oPanoption.style.visibility="hidden";
+		}
+		//打卡台的点击事件
+		var oBoxDaily = document.getElementById("boxdaily");
+		function clickWork(){
+			oBoxDaily.style.visibility="visible";
+		}
+		//电脑的点击事件
+		var oBoxScreen = document.getElementById("boxscreen");
+		var oSend = document.getElementById("send");
+		var oReceived = document.getElementById("received");
+		function clickComputer(){
+			oBoxScreen.style.visibility="visible";
+			oSend.style.visibility="visible";
+			oReceived.style.visibility="visible";
+		}
+		//收件箱点击事件
+		var oSmallBox = document.getElementById("smallbox");
+		function clickReceived(){
+			oSmallBox.style.visibility="visible";
+		}
+		//发件箱点击事件
+		var oPasswordPic = document.getElementById("passwordpic");
+		function clickSend(){
+			oPasswordPic.style.visibility="visible";
+		}
+		//办公桌的点击事件
+		var oBoxPaper = document.getElementById("boxpaper");
+		function clickDesk(){
+			oBoxPaper.style.visibility="visible";
+		}
+		//手机的点击事件
+		var oBoxPhone = document.getElementById("boxphone");
+		function clickPhoneDesk(){
+			oBoxPhone.style.visibility="visible";
+		}
+		//高科技点击事件
+		var oPanoption = document.getElementById("panoption");
+		function clickMachine(){
+			oPanoption.style.visibility="visible";
+		}
+		//当页面加载完后
+    window.onload = function(){
+		//获取主人公元素和限制移动的范围元素
+		var oMain = document.getElementById("main");
+		var oBoxWork = document.getElementById("boxwork");
+		var oBoxDesk = document.getElementById("boxdesk");
+		var oBoxBed = document.getElementById("boxbed");
+		var oBoxComputer = document.getElementById("boxcomputer");
+		var oBoxPhoneDesk = document.getElementById("boxphonedesk");
+		var oBoxMachine = document.getElementById("boxmachine");
+		//Event对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态
+		document.onkeydown = function(ev){
+			//兼容浏览器
+			var oEvent = ev || event;
+			var oMainleft = oMain.offsetLeft;
+			//键盘控制主体移动，并限制移动区域
+			if(oEvent.keyCode==65){
+				if(oMain.offsetLeft<10){
+					oMain.style.left = 0+"px";
+				}
+				else{
+					oMain.style.left = oMain.offsetLeft-20+"px";
+				}
+			}
+			if(oEvent.keyCode==87){
+				if(oMain.offsetTop<10){
+					oMain.style.top = 0+"px";
+				}
+				else{
+					oMain.style.top = oMain.offsetTop-20+"px";
+				}
+			}
+			if(oEvent.keyCode==68){
+				if(oMain.offsetLeft>=430){
+					oMain.style.left = 460+"px";
+				}
+				else{
+					oMain.style.left = oMain.offsetLeft+20+"px";
+				}
+			}
+			if(oEvent.keyCode==83){
+				if(oMain.offsetTop>=820){
+					oMain.style.top = 820+"px";
+				}
+				else{
+					oMain.style.top = oMain.offsetTop+20+"px";
+				}
+			}
+			//在固定的区域可以触发事件
+			if(oMain.offsetLeft>=-10&&oMain.offsetLeft<=90&&oMain.offsetTop>=0&&oMain.offsetTop<=120){
+				oBoxWork.style.visibility="visible";
+			}
+			else{
+				oBoxWork.style.visibility="hidden";
+				oBoxDaily.style.visibility="hidden";
+			}
+			if(oMain.offsetLeft>=80&&oMain.offsetLeft<373&&oMain.offsetTop>=80&&oMain.offsetTop<338){
+				oBoxComputer.style.visibility="visible";
+			}
+			else{
+				oBoxComputer.style.visibility="hidden";
+				oBoxScreen.style.visibility="hidden";
+				oSend.style.visibility="hidden";
+				oReceived.style.visibility="hidden";
+				oSmallBox.style.visibility="hidden";
+				oPasswordPic.style.visibility="hidden";
+			}
+			if(oMain.offsetLeft>=-10&&oMain.offsetLeft<140&&oMain.offsetTop>=160&&oMain.offsetTop<497){
+				oBoxPhoneDesk.style.visibility="visible";
+			}
+			else{
+				oBoxPhoneDesk.style.visibility="hidden";
+				oBoxPhone.style.visibility="hidden";
+			}
+			if(oMain.offsetLeft>=170&&oMain.offsetLeft<306&&oMain.offsetTop>=420&&oMain.offsetTop<571){
+				oBoxMachine.style.visibility="visible";
+			}
+			else{
+				oBoxMachine.style.visibility="hidden";
+				oPanoption.style.visibility="hidden";
+			}
+		}
+	}
+	</script>
+</body>
+</html>
